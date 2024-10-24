@@ -54,19 +54,16 @@
 </head>
 <body>
 <div class="profile-container">
-    <h1>Profile User</h1>
-    <div class="profile-info">
-        <!-- Tampilkan gambar profil dari public/assets/img -->
-        <img src="{{ asset('assets/img/foto.jpg') }}" alt="Profile Picture" class="profile-pic">
-        <!-- Info user -->
-        <div class="info-item">Nama: {{ $nama }}</div>
-        <div class="info-item">NPM: {{ $npm }}</div>
-        <!-- Info user dengan kelas inline -->
-        <div class="info-item">
-            <span>Kelas:</span>
-            <span>{{ $nama_kelas ?? 'Kelas tidak ditemukan' }}</span>
+        <div class="profile-image">
+            <img src="{{ asset($user->foto ?? 'assets/img/default-foto.jpg') }}" alt="Profile Image">
+        </div>
+
+        <h1>{{ $user->nama }}</h1>
+
+        <div class="profile-info">
+            <div class="info-item">NPM: {{ $user->npm }}</div>
+            <div class="info-item">Kelas: {{ $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan' }}</div>
         </div>
     </div>
-</div>
 </body>
 </html>
